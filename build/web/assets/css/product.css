@@ -1,0 +1,243 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none !important;
+}
+
+.product-shop__body {
+    margin: 40px 0;
+}
+
+.product-shop__body-cart {
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.product-shop-info__body{
+    display: flex;
+    justify-content: center;
+}
+
+.product-info__price-code{
+    font-size: 20px;
+    font-weight: 600;
+    color: red;
+    margin: 0;
+}
+.product-info__price-regular{
+    color: rgb(149, 139, 139);
+    text-decoration: line-through !important;
+}
+
+/* table size */
+
+.product-info__size{
+    background-color: #f5f6f8;
+}
+
+.product-info__size-body {
+    padding: 16px 20px;
+}
+
+.product-info__size-option {
+    margin: 6px 0;
+}
+
+.product-info__size-option-list {
+    list-style: none;
+    display: flex;
+}
+
+.product-info__size-option-items {
+    display: inline-block;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 6px 12px;
+    margin-right: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    border: 2px solid;
+    position: relative;
+    cursor: pointer;
+}
+
+.product-info__size-option-items--disable{
+    color: #ccc !important;
+    cursor: default;
+}
+
+.product-info__size-option-items:hover,
+.product-info__size-option-items--active{
+    background-color: #272727;
+    color: #fff;
+}
+
+.product-info__size-option-items .product-info__size-option-input {
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+/* table size close*/
+
+/* size chart */
+
+.product-info__size-chart a{
+    font-size: 12px;
+    float: right;
+}
+
+.size-chart__logo-img{
+    display: flex;
+    justify-content: center;
+}
+
+.size-chart__logo-img img {
+    height: 50px;
+    width: 60px;
+    object-fit: fill;
+}
+
+.size-chart__title span{
+    font-size: 12px;
+}
+
+.modal-body__body {
+    width: 40%;
+}
+
+.close-btn:focus {
+    outline: none;
+}
+/* close size-chart */
+
+/* size-submit */
+.product-info__size-submit{
+    margin-top: 6px;
+}
+
+.size-submit__quantity {
+    margin-right: 24px;
+    margin-top: 16px;
+}
+
+.size-submit__quantity-title{
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.size-submit__quantity-input {
+    width: 70px;
+    height: 40px;
+    padding: 0 6px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.product-info__size-submit-body{
+    display: flex;
+}
+
+.size-submit__customer,
+.size-submit__add-cart{
+    margin-bottom: 6px;
+}
+
+.size-submit__customer-btn,
+.size-submit__add-cart-btn{
+    height: 40px;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    min-width: 300px;
+    border-radius: 5px;
+}
+
+.size-submit__customer-btn{
+    background-color: #686868;
+}
+
+.size-submit__add-cart-btn{
+    background-color: #272727;
+}
+/* size-submit close*/
+
+/* more detail */
+.product-info__more{
+    margin-top: 24px;
+}
+
+.product-info__ship{
+    font-size: 18px;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-left: 20px;
+    border-top: 1px solid #ccc;
+}   
+
+.product-info__ship i{
+    float: right;
+    margin-right: 20px;
+    line-height: 27px;
+}
+
+.product-info__describe {
+    width: 400px;
+    text-align: center;
+    display: none;
+}
+/* more detail close*/
+
+/* recently viewed */
+.product-shop__body-viewed{
+    margin: 10px;
+}
+
+.product-shop__title h4{
+    font-size: 20px;
+    color: #686868;
+}
+.product-shop__viewed{
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+}
+.product-shop__viewed-list{
+    list-style: none;
+}
+.product-shop__viewed-items{
+    display: inline-block;
+}
+.product-shop__img-body{
+    text-align: center;
+}
+.product-shop__img-body img{
+    width: 250px;
+    height: 250px;
+}
+.product-shop__description {
+    padding: 10px;
+}
+.product-shop__description p {
+    margin: 0;
+}
+
+.product-shop__description-price-code{
+    color: red;
+    font-weight: 600;
+    font-size: 16px;
+}
+.product-shop__description-price-regular{
+    color: rgb(149, 139, 139);
+    text-decoration: line-through !important;
+}
+.product-shop__description-detail{
+    color: #000;
+}
+
+/* recently viewed close*/
