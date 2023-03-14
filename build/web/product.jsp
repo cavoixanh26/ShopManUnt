@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -61,8 +62,11 @@
                                             <h4>${product.getName()}</h4>
                                         </div>
                                         <div class="product-info__price">
-                                            <p class="product-info__price-code">£${product.getPrice()*0.8} with code</p>
+                                            <p class="product-info__price-code"><f:formatNumber type="number" value="${product.getPrice()*0.8}"/> with code</p>
                                             <p class="product-info__price-regular">Regular: £${product.getPrice()}</p>
+                                            <c:if test="${account.role==2}">
+                                            <a href="updateproduct?pid=${product.getId()}" >Update</a>  <a href="" >Delete</a>
+                                            </c:if>
                                         </div>
                                         <div class="product-info__size">
                                             <div class="product-info__size-body">

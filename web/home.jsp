@@ -196,11 +196,11 @@
                                     <span class="home-sort-bar__page-current">${page}</span>/${numPage}
                                 </span>
                                 <div class="home-sort-bar__page-control">
-                                    <a <c:if test="${page!=1}" >href="home?page=${page-1}"</c:if> 
+                                    <a <c:if test="${page!=1}" >href="home?page=${page-1}<c:if test="${sort!=null}">&sortPrice=${sort}</c:if>"</c:if> 
                                         class="home-sort-bar__page-btn">
                                         <i class="home-sort-bar__page-icon fas fa-angle-left ${page==1?"page__number-list-item--disable":""}"></i>
                                     </a>
-                                    <a  <c:if test="${page!=numPage}" >href="home?page=${page+1}"</c:if>
+                                    <a  <c:if test="${page!=numPage}" >href="home?page=${page+1}<c:if test="${sort!=null}">&sortPrice=${sort}</c:if>"</c:if>
                                         class="home-sort-bar__page-btn">
                                         <i class="home-sort-bar__page-icon fas fa-angle-right ${page==numPage?"page__number-list-item--disable":""}"></i>
                                     </a>
@@ -238,7 +238,7 @@
                                 <ul class="page__number-lists">
                                     <div class="page__number-list">
                                         <li class="page__number-list-item ">
-                                            <a <c:if test="${page!=1}" >href="home?page=${page-1}"</c:if> class="page__number-list-link ">
+                                            <a <c:if test="${page!=1}" >href="home?page=${page-1}<c:if test="${sort!=null}">&sortPrice=${sort}</c:if>"</c:if> class="page__number-list-link ">
                                                 <i class="fa-sharp fa-solid fa-caret-left ${page==1?"page__number-list-item--disable":""}"></i>
                                             </a>
                                         </li>
@@ -246,7 +246,7 @@
                                     <c:forEach begin="1" end="${requestScope.numPage}" var="p">
                                         <div class="page__number-list">
                                             <li class="page__number-list-item ${p==page? "page__number-list-item--active":""}">
-                                                <a href="home?page=${p}" class="page__number-list-link ">
+                                                <a href="home?page=${p}<c:if test="${sort!=null}">&sortPrice=${sort}</c:if>" class="page__number-list-link ">
                                                     ${p}
                                                 </a>
                                             </li>
@@ -254,7 +254,7 @@
                                     </c:forEach>
                                     <div class="page__number-list">
                                         <li class="page__number-list-item ">
-                                            <a <c:if test="${page!=numPage}" >href="home?page=${page+1}"</c:if> class="page__number-list-link ">
+                                            <a <c:if test="${page!=numPage}" >href="home?page=${page+1}<c:if test="${sort!=null}">&sortPrice=${sort}</c:if>"</c:if> class="page__number-list-link ">
                                                 <i class="fa-sharp fa-solid fa-caret-right ${page==numPage?"page__number-list-item--disable":""}"></i>
                                             </a>
                                         </li>

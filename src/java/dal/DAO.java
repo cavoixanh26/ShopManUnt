@@ -25,6 +25,7 @@ import model.ProductHis;
 import model.ProductInCategory;
 import model.Size;
 import model.Type;
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 
 /**
  *
@@ -94,7 +95,7 @@ public class DAO extends DBContext {
 
     public List<Size> getAllSize(int pid) {
         List<Size> list = new ArrayList<>();
-        String sql = "select *from size where idProduct = ?";
+        String sql = "select *from size where pid = ?";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, pid);
@@ -221,7 +222,7 @@ public class DAO extends DBContext {
 
     public Product getProductById(int id, String size) {
         String sql = "select p.id, p.name, p.idType, p.idColor, p.idBrand, p.price, p.releaseDate, p.description, p.idCategory, p.image"
-                + " from product p join size s on p.id=s.idProduct where p.id = ?";
+                + " from product p join size s on p.id=s.pid where p.id = ?";
         if (size != null) {
             sql += " and s.name = ?";
         }
@@ -605,7 +606,7 @@ public class DAO extends DBContext {
     public Stack<ProductHis> getPH(int ida) {
         Stack<ProductHis> list = new Stack<>();
         String sql = "select p.id, od.size,od.quantity, o.orderDate, o.status\n"
-                + "from account a join [order] o on a.id=o.ida \n"
+                + "from account a join order o on a.id=o.ida \n"
                 + "join orderDetail od on o.id=od.ido join product p on p.id=od.idPro\n"
                 + "where a.id=? order by o.orderDate desc";
         try {
@@ -613,7 +614,7 @@ public class DAO extends DBContext {
             st.setInt(1, ida);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Product p = getProductById(rs.getInt(1), null);
+                Product p = getProductById(rs.getInt("id"), null);
                 ProductHis ph = new ProductHis();
                 ph.setProduct(p);
                 ph.setSize(rs.getString("size"));
@@ -627,8 +628,51 @@ public class DAO extends DBContext {
         return list;
     }
 
+    public void updateProduct(Product product, List<Size> size) {
+        String sql = "UPDATE product\n"
+                + "   SET [name] = ?\n"
+                + "      ,[idType] = ?\n"
+                + "      ,[idColor] = ?\n"
+                + "      ,[idBrand] = ?\n"
+                + "      ,[price] = ?\n"
+                + "      ,[description] = ?\n"
+                + " WHERE id = ?";
+        String sqlUpdate = "UPDATE size SET quantity= ?\n"
+                + " WHERE size.name = ? and size.pid = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, product.getName());
+            st.setInt(2, product.getIdType());
+            st.setInt(3, product.getIdColor());
+            st.setInt(4, product.getIdBrand());
+            st.setDouble(5, product.getPrice());
+            st.setString(6, product.getDescription());
+            st.setInt(7, product.getId());
+            st.executeUpdate();
+            
+            PreparedStatement stUpdate = connection.prepareStatement(sqlUpdate);
+            for (Size s : size) {
+                stUpdate.setInt(1, s.getQuantity());
+                stUpdate.setString(2, s.getName());
+                st.setInt(3, product.getId());
+                st.executeUpdate();
+            }
+        } catch (SQLException e) {
+        }
+    }
+
     //
     public static void main(String[] args) {
-        
+        DAO d = new DAO();
+        List<Size> size = new ArrayList<>();
+        List<Size> sizea =d.getAllSize(1);
+        for (Size s : sizea) {
+            size.add(new Size(s.getName(), s.getQuantity()+1, s.getIdProduct()));
+        }
+        for (Size s : size) {
+            System.out.println(s.getQuantity());
+        }
+//        Product product = new Product(1, "Manchester United Home Shirt 2022-23", 1, 1,1, 70, null, "Turned up or pressed down, the humble polo collar has played a starring role in many of Manchester Uniteds biggest moments. Making a comeback on this adidas football jersey, it joins a shield-style badge and engineered pinstripe graphic to produce an eye-catching look. Moisture-absorbing AEROREADY and mesh panels make it a comfortable choice for passionate supporters. Made with 100% recycled materials, this product represents just one of our solutions to help end plastic waste.", 1, null);
+//        d.updateProduct(product, size);
     }
 }

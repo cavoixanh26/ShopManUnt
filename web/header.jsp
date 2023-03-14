@@ -73,11 +73,13 @@
                                                 <c:if test="${account.role==2}">
                                                 <li class="user__option-selects"><a class="user__option-link" href="statistic">Statistic</a></li>
                                                 <li class="user__option-selects"><a class="user__option-link" href="newproduct">Add New Product</a></li>
-                                            </c:if>
+                                                <li class="user__option-selects"><a class="user__option-link" href="updateproduct">Update Product</a></li>
+                                                </c:if>
                                                 <c:if test="${account.role==1}">
                                                 <li class="user__option-selects"><a class="user__option-link" href="">Add New Emp</a></li>
                                                 <li class="user__option-selects"><a class="user__option-link" href="">Manage Emp</a></li>
                                                 </c:if>
+                                                
                                         </ul>
                                     </div>
                                 </div>

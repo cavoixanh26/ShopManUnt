@@ -182,6 +182,7 @@
                         <h4>Order History</h4>
                     </div>
                     <div class="line"></div>
+                    <c:set value="${sessionScope.account}" var="account"/>
                     <div class="body-list-product row">
                         <div class="col-12">
                             <jsp:useBean class="dal.DAO" id="dao"/>

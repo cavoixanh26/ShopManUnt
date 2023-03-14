@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -174,15 +175,15 @@
                                 <c:forEach items="${requestScope.productPage}" var="p">
                                     <div class="col-3 product-contain">
                                         <div class="product-item">
-                                            <a href="">
+                                            <a href="product?pid=${p.id}">
                                                 <div class="product__img">
                                                     <div class="pro_img_contain">
                                                         <img class="img-thumbnail" src="./assets/image/products-items/${p.image}" alt="">
                                                     </div>
                                                 </div>
                                                 <div class="product__description">
-                                                    <p class="product__description-price-code">1$ with code</p>
-                                                    <p class="product__description-price-regular">Regular: ${p.price}$</p>
+                                                    <p class="product__description-price-code">£<f:formatNumber type="number" value="${p.price*0.8}"/> with code</p>
+                                                    <p class="product__description-price-regular">Regular: £${p.price}</p>
                                                     <p class="product__description-detail">${p.name}</p>
                                                 </div>
                                             </a>

@@ -2,9 +2,11 @@
     Document   : search
     Created on : 10-Dec-2022, 20:25:07
     Author     : ADMIN
---%>
+--%>    
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -173,15 +175,15 @@
                             <c:forEach items="${requestScope.productPage}" var="p">
                             <div class="col-3 product-contain">
                                 <div class="product-item">
-                                    <a href="">
+                                    <a href="product?pid=${p.id}">
                                         <div class="product__img">
                                             <div class="pro_img_contain">
                                                 <img class="img-thumbnail" src="./assets/image/products-items/${p.image}" alt="">
                                             </div>
                                         </div>
                                         <div class="product__description">
-                                            <p class="product__description-price-code">1$ with code</p>
-                                            <p class="product__description-price-regular">Regular: ${p.price}$</p>
+                                            <p class="product__description-price-code">£<f:formatNumber type="number" value="${p.price*0.8}"/> with code</p>
+                                            <p class="product__description-price-regular">Regular: £${p.price}</p>
                                             <p class="product__description-detail">${p.name}</p>
                                         </div>
                                     </a>
@@ -196,7 +198,8 @@
                                 <ul class="page__number-lists">
                                     <div class="page__number-list">
                                         <li class="page__number-list-item ">
-                                            <a <c:if test="${page!=1}" >href="seacrh?query=${query}&page=${page-1}<c:if test="${sort!=null}">&sortPrice=${sort}</c:if><c:if test="${types!=null}"><c:forEach items="${types}" var="t">&type=${t}</c:forEach></c:if><c:if test="${brands!=null}"><c:forEach items="${brands}" var="t">&brand=${t}</c:forEach></c:if><c:if test="${colors!=null}"><c:forEach items="${colors}" var="t">&color=${t}</c:forEach></c:if><c:if test="${priceFrom!=null}">&priceFrom=${priceFrom}</c:if><c:if test="${priceTo!=null}">&priceTo=${priceTo}</c:if>"</c:if> class="page__number-list-link ">
+                                            
+                                            <a <c:if test="${page!=1}" >href="search?query=${query}&page=${page-1}<c:if test="${sort!=null}">&sortPrice=${sort}</c:if><c:if test="${types!=null}"><c:forEach items="${types}" var="t">&type=${t}</c:forEach></c:if><c:if test="${brands!=null}"><c:forEach items="${brands}" var="t">&brand=${t}</c:forEach></c:if><c:if test="${colors!=null}"><c:forEach items="${colors}" var="t">&color=${t}</c:forEach></c:if><c:if test="${priceFrom!=null}">&priceFrom=${priceFrom}</c:if><c:if test="${priceTo!=null}">&priceTo=${priceTo}</c:if>"</c:if> class="page__number-list-link ">
                                                 <i class="fa-sharp fa-solid fa-caret-left ${page==1?"page__number-list-item--disable":""}"></i>
                                             </a>
                                         </li>
